@@ -1,0 +1,16 @@
+// WSN
+digit = "0" | "1" | ... | "9" .
+number = [ "-" ] digit { digit } [ "." digit { digit } ] [ "e" digit { digit } ] .
+addition = "+" .
+subtraction = "-" .
+multiplication = "*" .
+division = "/" .
+print = "=" .
+operation
+    = number
+    | addition
+    | subtraction
+    | multiplication
+    | division
+    | print
+    .
