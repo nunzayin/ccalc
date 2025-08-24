@@ -20,10 +20,10 @@ Supported instructions are:
 Here's the instruction set syntax definition in Wirth notation:
 ```wsn
 digit = "0" | "1" | ... | "9" .
-number
-    = [ "-" ] digit { digit } [ "." digit { digit } ] [ "e" [ "-" ] digit { digit } ]
-    | [ "-" ] { digit } "." digit { digit } [ "e" [ "-" ] digit { digit } ]
-    .
+fraction = "." digit { digit } .
+e = "e" | "E" .
+exponent = e [ "-" ] digit { digit } .
+number = [ "-" ] ( ( digit { digit } [ fraction ] ) | ( { digit } fraction ) ) [ exponent ] .
 addition = "+" .
 subtraction = "-" .
 multiplication = "*" .
