@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "stack.h"
 
+const size_t NUMSTACK_INIT_CAP = 32;
+
 numstack* numstack_init(void) {
     number* data = calloc(NUMSTACK_INIT_CAP, sizeof(number));
     if (!data) {
@@ -23,7 +25,7 @@ numstack* numstack_init(void) {
 }
 
 void __numstack_resize(numstack* stack) {
-    number* new_data = realloc(stack->data, stack->cap*2);
+    number* new_data = realloc(stack->data, stack->cap*2*sizeof(number));
     if (!new_data) {
         numstack_deinit(stack);
         fprintf(stderr, "Could not expand numstack\n");
