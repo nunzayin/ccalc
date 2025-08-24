@@ -13,7 +13,8 @@ void add(char* data) {
 }
 
 void subtract(char* data) {
-    numstack_push(stack, -numstack_pop(stack) + numstack_pop(stack));
+    number num = numstack_pop(stack);
+    numstack_push(stack, numstack_pop(stack) - num);
 }
 
 void multiply(char* data) {
@@ -33,7 +34,7 @@ void print_number(char* data) {
     printf("%g\n", numstack_pop(stack));
 }
 
-const void (*TOKEN_INTERPRET_VTABLE[/*TokenKind*/])(char*) = {
+void (*TOKEN_INTERPRET_VTABLE[/*TokenKind*/])(char*) = {
     [TOKEN_NUMBER] = push_number,
     [TOKEN_ADDITION] = add,
     [TOKEN_SUBTRACTION] = subtract,

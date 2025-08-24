@@ -5,7 +5,7 @@
 #include <errno.h>
 
 void process_file(char* filename) {
-    FILE* fp = filename == "-" ? stdin : fopen(filename, "r");
+    FILE* fp = strcmp(filename, "-") == 0 ? stdin : fopen(filename, "r");
     if (!fp) {
         fprintf(stderr, "Could not open '%s': %s\n",
                 filename, strerror(errno));

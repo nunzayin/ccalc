@@ -367,6 +367,10 @@ void digest_char(Tokenizer* tokenizer, unsigned char c) {
     if (rule.do_split && tokenizer->token->kind != TOKEN_SKIP)
         push_token(tokenizer, true);
     tokenizer->current_state = rule.new_state;
+    if (tokenizer->current_state == TOKENIZER_STATE_ERR) {
+        fprintf(stderr, "Syntax error\n");
+        abort();
+    }
     update_token_kind(tokenizer);
     if (tokenizer->token->kind == TOKEN_SKIP) return;
     append_char(tokenizer->token, c);
